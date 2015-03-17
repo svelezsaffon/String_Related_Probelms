@@ -11,6 +11,7 @@
 #include <cmath>
 #include <cassert>
 #include <climits>
+#include <curses.h>
 
 #ifndef _STRINGS_STRING_PROBLEMS_H_
 #define _STRINGS_STRING_PROBLEMS_H_
@@ -38,10 +39,14 @@ int char_to_int(char aux){
 }
 
 void intergerToString(int num,char *intlen){
-    int dest;
+    int move;
 
     if(num<0){
         num*=-1;
+        move=1;
+        intlen[0]='-';
+    }else{
+        move=0;
     }
 
     int len=log10(num)+1;
@@ -51,18 +56,20 @@ void intergerToString(int num,char *intlen){
     for(int i=len-1;i>=0;i--){
         int aux=num % 10;
         num /=10;
-        intlen[i]=int_to_char(aux);
+        intlen[i+move]=int_to_char(aux);
     }
 
-    intlen[len]='\0';
+    intlen[len+move]='\0';
 }
 
 int stringtoint(char *number){
+
     int mul=1;
+
     int result=0;
 
-
     int dest;
+
     if(number[0]=='-'){
         dest=0;
     }else{

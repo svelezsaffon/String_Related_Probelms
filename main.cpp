@@ -8,7 +8,7 @@ int main() {
 
     char from[]="santiagovelezsaffon";
 
-    intergerToString(-123,from);
+    intergerToString(1234,from);
 
     printf("%s",from);
     return 0;
