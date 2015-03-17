@@ -8,14 +8,14 @@
 #include <iostream>
 #include <unordered_map>
 #include <cstdlib>
-
+#include <cmath>
+#include <cassert>
+#include <climits>
 
 #ifndef _STRINGS_STRING_PROBLEMS_H_
 #define _STRINGS_STRING_PROBLEMS_H_
 
 #define CHAR_TO_POS(A) A-97
-
-
 
 void reverse(char *text,int start,int end){
 
@@ -29,9 +29,32 @@ void reverse(char *text,int start,int end){
 
 }
 
+char int_to_char(int num){
+    return num + '0';
+}
 
 int char_to_int(char aux){
     return aux-'0';
+}
+
+void intergerToString(int num,char *intlen){
+    int dest;
+
+    if(num<0){
+        num*=-1;
+    }
+
+    int len=log10(num)+1;
+
+    assert(strlen(intlen)>=len);
+
+    for(int i=len-1;i>=0;i--){
+        int aux=num % 10;
+        num /=10;
+        intlen[i]=int_to_char(aux);
+    }
+
+    intlen[len]='\0';
 }
 
 int stringtoint(char *number){
