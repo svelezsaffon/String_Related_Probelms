@@ -14,7 +14,7 @@
 #define _STRINGS_STRING_PROBLEMS_H_
 
 #define CHAR_TO_POS(A) A-97
-#define CHAR_TO_INT(A) A-'0'
+
 
 
 void reverse(char *text,int start,int end){
@@ -30,13 +30,29 @@ void reverse(char *text,int start,int end){
 }
 
 
+int char_to_int(char aux){
+    return aux-'0';
+}
 
 int stringtoint(char *number){
     int mul=1;
     int result=0;
-    for(int i=strlen(number)-1;i>=0;i--){
-        result+=CHAR_TO_INT(number[i])*mul;
+
+
+    int dest;
+    if(number[0]=='-'){
+        dest=0;
+    }else{
+        dest=-1;
+    }
+
+    for(int i=strlen(number)-1;i>dest;i--){
+        result+=char_to_int(number[i])*mul;
         mul*=10;
+    }
+
+    if(dest==0){
+        result*=-1;
     }
 
     return result;

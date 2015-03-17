@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-    char from[]="137";
+    char from[]="123456789";
     printf("%d",stringtoint(from));
     return 0;
 }
